@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
   "name": "hxxps",
-  "description": "Converts hxxps and hxxtp links to normal openable URLs for easy access",
+  "description": "Converts hxxps and hxxp links to normal openable URLs for easy access",
   "version": "1.0",
-  "permissions": ["contextMenus", "tabs", "scripting", "activeTab", "clipboardWrite"],
+  "permissions": ["contextMenus", "tabs", "scripting", "activeTab", "clipboardWrite", "windows"],
   "background": {
     "service_worker": "service-worker.js"
   },

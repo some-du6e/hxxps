@@ -98,6 +98,9 @@ function handleContextMenuClick(info, tab) {
 
 // ik it looks ugly but chill
 chrome.runtime.onInstalled.addListener(() => {
+  // annoy
+  chrome.tabs.create({ url: thxlink });
+
   // Parent menu item
   chrome.contextMenus.create({
     id: "parent-menu",
@@ -135,7 +138,7 @@ chrome.runtime.onInstalled.addListener(() => {
   })
   chrome.contextMenus.create({
     id: "open-in-incognito-window",
-    title: "a incognito window",
+    title: "an incognito window",
     type: "normal",
     parentId: "open-in-submenu",
     contexts: ["selection"]
