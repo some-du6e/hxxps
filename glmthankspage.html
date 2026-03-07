@@ -1,0 +1,566 @@
+<!-- slopcoded with glm-->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>hxxps - Installed</title>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #0a0f14;
+        --bg-card: #111920;
+        --fg: #e4e8eb;
+        --muted: #6b7a8a;
+        --accent: #00d4aa;
+        --accent-dim: rgba(0, 212, 170, 0.15);
+        --accent-glow: rgba(0, 212, 170, 0.4);
+        --border: #1e2a36;
+        --code-bg: #0d1318;
+        --warning: #ffb347;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--bg);
+        color: var(--fg);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      .font-mono {
+        font-family: "JetBrains Mono", monospace;
+      }
+
+      #particles-js {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+      }
+
+      .content {
+        position: relative;
+        z-index: 10;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+      }
+
+      .card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 2.25rem 2rem;
+        max-width: 440px;
+        width: 100%;
+        text-align: center;
+        box-shadow:
+          0 0 0 1px rgba(0, 212, 170, 0.05),
+          0 20px 50px -10px rgba(0, 0, 0, 0.5),
+          0 0 100px -20px var(--accent-glow);
+        animation: cardEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--accent-dim), transparent);
+      }
+
+      @keyframes cardEntrance {
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.6rem;
+        margin-bottom: 1.5rem;
+        opacity: 0;
+        animation: fadeUp 0.6s 0.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      .logo-icon {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, var(--accent-dim), transparent);
+        border: 1px solid var(--accent);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+
+      .logo-icon::after {
+        content: "";
+        position: absolute;
+        inset: -4px;
+        border-radius: 14px;
+        background: var(--accent);
+        opacity: 0.1;
+        filter: blur(8px);
+      }
+
+      .logo-icon svg {
+        width: 20px;
+        height: 20px;
+        stroke: var(--accent);
+        stroke-width: 2;
+        fill: none;
+      }
+
+      .logo-text {
+        font-size: 1.6rem;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        color: var(--fg);
+        display: inline-flex;
+        align-items: baseline;
+      }
+
+      .logo-text .logo-ps {
+        color: var(--accent);
+      }
+
+      .title {
+        font-size: 1.5rem;
+        font-weight: 400;
+        letter-spacing: -0.01em;
+        margin-bottom: 0.4rem;
+        color: var(--fg);
+        opacity: 0;
+        animation: fadeUp 0.6s 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      .subtitle {
+        font-size: 0.9rem;
+        font-weight: 300;
+        color: var(--muted);
+        margin-bottom: 1.75rem;
+        line-height: 1.5;
+        opacity: 0;
+        animation: fadeUp 0.6s 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .instruction-box {
+        background: var(--code-bg);
+        border-radius: 10px;
+        padding: 1.1rem 1.25rem;
+        border: 1px solid var(--border);
+        margin-bottom: 1.25rem;
+        opacity: 0;
+        animation: fadeUp 0.6s 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        text-align: left;
+      }
+
+      .instruction-header {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        margin-bottom: 0.6rem;
+      }
+
+      .instruction-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+      }
+
+      .instruction-dot.red {
+        background: #ff5f56;
+      }
+      .instruction-dot.yellow {
+        background: #ffbd2e;
+      }
+      .instruction-dot.green {
+        background: #27c93f;
+      }
+
+      .instruction-label {
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--muted);
+        margin-left: auto;
+        font-weight: 500;
+      }
+
+      .instruction-text {
+        font-size: 0.85rem;
+        color: var(--fg);
+        line-height: 1.7;
+        padding-left: 0.25rem;
+      }
+
+      .instruction-text .key {
+        display: inline-block;
+        background: var(--border);
+        color: var(--accent);
+        padding: 0.1em 0.5em;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        margin: 0 0.1em;
+        border: 1px solid rgba(0, 212, 170, 0.2);
+      }
+
+      .demo-section {
+        opacity: 0;
+        animation: fadeUp 0.6s 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      .demo-label {
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--muted);
+        margin-bottom: 0.6rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+
+      .demo-label::before,
+      .demo-label::after {
+        content: "";
+        width: 20px;
+        height: 1px;
+        background: var(--border);
+      }
+
+      .demo-link {
+        background: var(--code-bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 0.85rem 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+        transition: all 0.2s ease;
+        cursor: text;
+        user-select: all;
+        text-align: left;
+      }
+
+      .demo-link:hover {
+        border-color: var(--accent);
+        box-shadow: 0 0 20px -5px var(--accent-glow);
+      }
+
+      .demo-link-icon {
+        width: 26px;
+        height: 26px;
+        background: var(--accent-dim);
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .demo-link-icon svg {
+        width: 13px;
+        height: 13px;
+        stroke: var(--accent);
+        stroke-width: 2;
+        fill: none;
+      }
+
+      .demo-link-text {
+        font-size: 0.8rem;
+        color: var(--muted);
+        word-break: break-all;
+        line-height: 1.5;
+        display: inline-flex;
+        align-items: baseline;
+        flex-wrap: wrap;
+      }
+
+      .demo-link-text .protocol {
+        color: var(--accent);
+      }
+
+      .demo-link-text .obfuscated {
+        color: var(--warning);
+      }
+
+      .footer {
+        margin-top: 1.25rem;
+        font-size: 0.7rem;
+        color: var(--muted);
+        opacity: 0;
+        animation: fadeUp 0.6s 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .footer-dot {
+        width: 4px;
+        height: 4px;
+        background: var(--accent);
+        border-radius: 50%;
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.3;
+        }
+      }
+
+      ::selection {
+        background: var(--accent-glow);
+        color: var(--fg);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .card,
+        .logo,
+        .title,
+        .subtitle,
+        .instruction-box,
+        .demo-section,
+        .footer {
+          animation: none;
+          opacity: 1;
+          transform: none;
+        }
+
+        .footer-dot {
+          animation: none;
+        }
+
+        #particles-js {
+          display: none;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .card {
+          padding: 1.75rem 1.25rem;
+          border-radius: 12px;
+        }
+
+        .title {
+          font-size: 1.3rem;
+        }
+
+        .demo-link-text {
+          font-size: 0.75rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="particles-js"></div>
+
+    <main class="content">
+      <div class="card">
+        <div class="logo">
+          <div class="logo-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"
+                stroke-linecap="round"
+                stroke-linejoin="round" />
+              <path
+                d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"
+                stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
+          <span class="font-mono logo-text">
+            <span class="logo-hxx">hxx</span>
+            <span class="logo-ps">ps</span>
+          </span>
+        </div>
+
+        <h1 class="title">Hxxps is ready</h1>
+        <p class="subtitle">Quickly deobfuscate or defang URLs directly from your browser.</p>
+
+        <div class="instruction-box">
+          <div class="instruction-header">
+            <div class="instruction-dot red"></div>
+            <div class="instruction-dot yellow"></div>
+            <div class="instruction-dot green"></div>
+            <span class="instruction-label font-mono">how-to-use.txt</span>
+          </div>
+          <p class="instruction-text font-mono">
+            <span class="key">highlight</span>
+            any defanged link
+            <br />
+            <span class="key">right-click</span>
+            to open the context menu
+            <br />
+            <span class="key">click</span>
+            "Hxxps" to copy or convert it
+          </p>
+        </div>
+
+        <div class="demo-section">
+          <p class="demo-label">Example defanged URL</p>
+          <div class="demo-link">
+            <div class="demo-link-icon">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"
+                  stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path
+                  d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"
+                  stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </div>
+            <code id="demo-url" class="demo-link-text font-mono"></code>
+          </div>
+        </div>
+
+        <p class="footer">
+          <span class="footer-dot"></span>
+          Converts hxxps://, hxxp://, and [.]
+        </p>
+      </div>
+    </main>
+
+    <script>
+      particlesJS("particles-js", {
+        particles: {
+          number: {
+            value: 50,
+            density: {
+              enable: true,
+              value_area: 800,
+            },
+          },
+          color: {
+            value: "#00d4aa",
+          },
+          shape: {
+            type: "triangle",
+            stroke: {
+              width: 0,
+              color: "#000000",
+            },
+          },
+          opacity: {
+            value: 0.4,
+            random: true,
+            anim: {
+              enable: true,
+              speed: 1,
+              opacity_min: 0.1,
+              sync: false,
+            },
+          },
+          size: {
+            value: 5,
+            random: true,
+            anim: {
+              enable: true,
+              speed: 2,
+              size_min: 1,
+              sync: false,
+            },
+          },
+          line_linked: {
+            enable: true,
+            distance: 150,
+            color: "#00d4aa",
+            opacity: 0.2,
+            width: 1,
+          },
+          move: {
+            enable: true,
+            speed: 1.5,
+            direction: "none",
+            random: true,
+            straight: false,
+            out_mode: "out",
+            bounce: false,
+            attract: {
+              enable: false,
+              rotateX: 600,
+              rotateY: 1200,
+            },
+          },
+        },
+        interactivity: {
+          detect_on: "canvas",
+          events: {
+            onhover: {
+              enable: true,
+              mode: "grab",
+            },
+            onclick: {
+              enable: true,
+              mode: "push",
+            },
+            resize: true,
+          },
+          modes: {
+            grab: {
+              distance: 140,
+              line_linked: {
+                opacity: 0.5,
+              },
+            },
+            push: {
+              particles_nb: 3,
+            },
+          },
+        },
+        retina_detect: true,
+      })
+
+      document.getElementById("demo-url").innerHTML =
+        '<span class="protocol">hxxps</span><span class="url-rest">://github</span><span class="obfuscated">[.]</span><span class="url-rest">com</span>'
+    </script>
+  </body>
+</html>
