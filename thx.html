@@ -143,9 +143,11 @@
         font-weight: 700;
         letter-spacing: -0.03em;
         color: var(--fg);
+        display: inline-flex;
+        align-items: baseline;
       }
 
-      .logo-text span {
+      .logo-text .logo-ps {
         color: var(--accent);
       }
 
@@ -310,6 +312,9 @@
         color: var(--muted);
         word-break: break-all;
         line-height: 1.5;
+        display: inline-flex;
+        align-items: baseline;
+        flex-wrap: wrap;
       }
 
       .demo-link-text .protocol {
@@ -411,66 +416,55 @@
             </svg>
           </div>
           <span class="font-mono logo-text">
-            hxx
-            <span>ps</span>
+            <span class="logo-hxx">hxx</span>
+            <span class="logo-ps">ps</span>
           </span>
         </div>
 
-        <h1 class="title">Installation complete</h1>
-        <p class="subtitle">Deobfuscate protected links instantly.</p>
+        <h1 class="title">Hxxps is ready</h1>
+        <p class="subtitle">Quickly deobfuscate or defang URLs directly from your browser.</p>
 
         <div class="instruction-box">
           <div class="instruction-header">
             <div class="instruction-dot red"></div>
             <div class="instruction-dot yellow"></div>
             <div class="instruction-dot green"></div>
-            <span class="instruction-label font-mono">usage.sh</span>
+            <span class="instruction-label font-mono">how-to-use.txt</span>
           </div>
           <p class="instruction-text font-mono">
-            <span class="key">select</span>
-            obfuscated link
+            <span class="key">highlight</span>
+            any defanged link
             <br />
             <span class="key">right-click</span>
-            context menu
+            to open the context menu
             <br />
-            <span class="key">enter</span>
-            to open converted url
+            <span class="key">click</span>
+            "Hxxps" to copy or convert it
           </p>
         </div>
 
         <div class="demo-section">
-          <p class="demo-label">Test Link</p>
+          <p class="demo-label">Example defanged URL</p>
           <div class="demo-link">
             <div class="demo-link-icon">
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path
-                  d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                  d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"
                   stroke-linecap="round"
                   stroke-linejoin="round" />
-                <polyline points="15,3 21,3 21,9" stroke-linecap="round" stroke-linejoin="round" />
-                <line
-                  x1="10"
-                  y1="14"
-                  x2="21"
-                  y2="3"
+                <path
+                  d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"
                   stroke-linecap="round"
                   stroke-linejoin="round" />
               </svg>
             </div>
-            <code class="demo-link-text font-mono">
-              <span class="protocol">hxxps</span>
-              ://www
-              <span class="obfuscated">[.]</span>
-              google
-              <span class="obfuscated">[.]</span>
-              com
-            </code>
+            <code id="demo-url" class="demo-link-text font-mono"></code>
           </div>
         </div>
 
         <p class="footer">
           <span class="footer-dot"></span>
-          Supports hxxps, hxxp, and [.] notation
+          Converts hxxps://, hxxp://, and [.]
         </p>
       </div>
     </main>
@@ -564,6 +558,9 @@
         },
         retina_detect: true,
       })
+
+      document.getElementById("demo-url").innerHTML =
+        '<span class="protocol">hxxps</span><span class="url-rest">://github</span><span class="obfuscated">[.]</span><span class="url-rest">com</span>'
     </script>
   </body>
 </html>
