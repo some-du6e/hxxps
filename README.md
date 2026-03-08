@@ -1,10 +1,10 @@
+<div align="center">
+
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Version 1.0](https://img.shields.io/badge/version-1.0-green.svg)](https://github.com/some-du6e/hxxps/releases)
 ![Chrome Web Store Rating](https://img.shields.io/chrome-web-store/rating/aoajmolhmgdkcheopgbjlfgdfmdlcodg)
 ![Chrome Web Store Users](https://img.shields.io/chrome-web-store/users/aoajmolhmgdkcheopgbjlfgdfmdlcodg)
 ![Hackatime Badge](https://hackatime-badge.hackclub.com/U082DRXPMF1/hxxps)
-
-<div align="center">
 
 # hxxps
 
