@@ -100,5 +100,5 @@ jobs:
             gh release upload $tag hxxps.zip hxxps.crx --clobber
           }
           else {
-            gh release create $tag judgeproperly.zip judgeproperly.crx --title $name --notes $notes --target $env:GITHUB_SHA
+            gh release create $tag hxxps.zip hxxps.crx --title $name --notes $notes --target $env:GITHUB_SHA
           }
